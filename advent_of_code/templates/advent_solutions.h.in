@@ -1,0 +1,30 @@
+#pragma once
+
+/*
+Put your solutions for each day in here and DO NOT submit it to source control.
+*/
+
+#define DAY_01_1_SOLUTION dummy
+#define DAY_01_2_SOLUTION dummy
+#define DAY_02_1_SOLUTION dummy
+#define DAY_02_2_SOLUTION dummy
+#define DAY_03_1_SOLUTION dummy
+#define DAY_03_2_SOLUTION dummy
+#define DAY_04_1_SOLUTION dummy
+#define DAY_04_2_SOLUTION dummy
+#define DAY_05_1_SOLUTION dummy
+#define DAY_05_2_SOLUTION dummy
+#define DAY_06_1_SOLUTION dummy
+#define DAY_06_2_SOLUTION dummy
+#define DAY_07_1_SOLUTION dummy
+#define DAY_07_2_SOLUTION dummy
+#define DAY_08_1_SOLUTION dummy
+#define DAY_08_2_SOLUTION dummy
+#define DAY_09_1_SOLUTION dummy
+#define DAY_09_2_SOLUTION dummy
+#define DAY_10_1_SOLUTION dummy
+#define DAY_10_2_SOLUTION dummy
+#define DAY_11_1_SOLUTION dummy
+#define DAY_11_2_SOLUTION dummy
+#define DAY_12_1_SOLUTION dummy
+#define DAY_12_2_SOLUTION dummy
