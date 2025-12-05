@@ -33,7 +33,8 @@ namespace
 #include "utils/split_string.h"
 #include "utils/istream_line_iterator.h"
 #include "utils/int_range.h"
-#include "swap_remove.h"
+#include "utils/swap_remove.h"
+#include "utils/range_contains.h"
 
 namespace
 {
@@ -94,16 +95,13 @@ namespace
 			if (line.empty()) break;
 			add_range(result, parse_range(line));
 		}
-		stdr::sort(result);
 		return result;
 	}
 
 	bool is_fresh(const RangeSet& fresh_ranges, ID id)
 	{
-		AdventCheck(std::numeric_limits<ID>::max() != id);
-		const auto range_max = stdr::lower_bound(fresh_ranges, id+1, {}, &Range::first);
-		const auto result = stdr::find_if(stdr::subrange{ cbegin(fresh_ranges) , range_max }, [id](ID high) {return id < high; }, &Range::second);
-		return result != range_max;
+		const auto matching_it = stdr::find_if(fresh_ranges, [id](const Range& r) {return utils::range_contains_exc(id, r); });
+		return matching_it != end(fresh_ranges);
 	}
 
 	std::size_t count_fresh(const RangeSet& fresh_ranges, std::istream& input)
@@ -125,10 +123,15 @@ namespace
 
 namespace
 {
+	uint64_t get_range_size(const Range& r)
+	{
+		return r.second - r.first;
+	}
+
 	uint64_t solve_p2(std::istream& input)
 	{
 		const RangeSet fresh_ranges = parse_ranges(input);
-		return stdr::fold_left(fresh_ranges | stdr::views::transform([](const Range& r) {return r.second - r.first; }), uint64_t{ 0 }, std::plus<uint64_t>{});
+		return stdr::fold_left(fresh_ranges | stdr::views::transform(get_range_size), uint64_t{ 0 }, std::plus<uint64_t>{});
 	}
 }
 
