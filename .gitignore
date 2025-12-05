@@ -73,6 +73,7 @@ advent_of_code/advent/advent_solutions.h
 **/CMakeFiles/*
 advent_of_code/.vs/*
 *.cmake
+!*/cmakelists.txt
 
 # Command files
 *.command
