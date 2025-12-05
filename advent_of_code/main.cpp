@@ -1,7 +1,7 @@
 #include "advent/advent_of_code.h"
+#include "advent/default_filters.h"
 
 #include <iostream>
-#include <vector>
 
 int main(int argc, char** argv)
 {
@@ -13,10 +13,16 @@ int main(int argc, char** argv)
 	// and advent_eighteen_p2() (as well as any other test functions with "eighteen"
 	// in the function name.
 	// Leave blank to run everything.
-	std::vector<std::string_view> filters{ "four" };
+	std::vector<std::string_view> filters;
+	filters.reserve(argc - 1);
 	for(int i=1;i<argc;++i)
 	{
 		filters.push_back(argv[i]);
+	}
+
+	if (filters.empty())
+	{
+		filters = std::move(advent::default_test_filters);
 	}
 
 	verify_all(filters);

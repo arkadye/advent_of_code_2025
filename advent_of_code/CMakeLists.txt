@@ -88,6 +88,7 @@ set(TEST_CONFIG_FILES
 	"advent/advent_setup.h"
 	"advent/advent_solutions.h"
 	"advent/advent_test_inputs.h"
+	"advent/default_filters.h"
 )
 
 source_group("test_config" FILES ${TEST_CONFIG_FILES})
