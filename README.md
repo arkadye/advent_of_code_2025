@@ -27,13 +27,28 @@ See the examples in advent1.h, advent1.cpp, and advent_of_code_testcases.cpp.
      `// advent42.cpp`    
      `ResultType advent_fortytwo_testcase_a() { return "Life The Universe and Everything"; }`
      
-2. In advent_of_code_testcases.cpp, go to `const verification_tests tests[]` and add the line `TESTCASE(your_functionName, expected_result),` at the appropriate point in the array. `expected_result` should be a string. In this example it would be `TESTCASE(advent_fortytwo_testcase_a,"Life The Universe and Everything"),`. Importantly: remember to add a COMMA at the end, not a semi-colon. (It's obvious, but muscle memory and habit will make you want to use the semi-colon.)
+2. In advent_of_code_testcases.cpp, go to `const verification_tests tests[]` and add the line `TESTCASE(your_functionName, expected_result),` at the appropriate point in the array. `expected_result` should be a string or an integer. In this example it would be `TESTCASE(advent_fortytwo_testcase_a,"Life The Universe and Everything"),`. Importantly: remember to add a COMMA at the end, not a semi-colon. (It's obvious, but muscle memory and habit will make you want to use the semi-colon.)
+
+Alternatively, you can have parameterised tests:
+
+     `// advent99.h`
+	 `ResultType advent_ninetynine_testcase_a(std::istream&);`
+	 
+	 `// advent99.cpp`
+	 `ResultType advent_ninetynine_testcase_a(std::istream& input)`
+	 `{`
+	 `    int x{};`
+	 `    input >> x;`
+	 `    return x + 1;`
+	 `}`
+	 
+This can be called using `TESTCASE_WITH_ARGS` like so: `TESTCASE_WITH_ARGS(advent_ninetynine_testcase_a,"5",6)` and so on.
 
 Now when you run the tests, the testcase should appear, and will report success or failure.
 
 ## To filter which testcases/solutions run
 
-In main.cpp, a filter can be added to the argument of `verify_all()` to only run some of hte testcases, instead of everything. For example, if your day one solution is very slow you can put an argument of `"_two_"` in, and it will only run functions on the `verification_tests` list which have `two` in the function name (e.g. `advent_two_p1()` and `advent_two_p2()` as well as `advent_two_p1_testcase_a()` if you added it. To run everything, leave the testcase blank (`""` or `std::string{}`).
+In `default_filters.h` is a filter can be added to the argument of `verify_all()` to only run some of the testcases, instead of everything. For example, if your day one solution is very slow you can put an argument of `"_two_"` in, and it will only run functions on the `verification_tests` list which have `two` in the function name (e.g. `advent_two_p1()` and `advent_two_p2()` as well as `advent_two_p1_testcase_a()` if you added it. To run everything, leave the testcase blank (`""` or `std::string{}`). These filters can also be set from the command line.
 
 Arguments on the command line will also be passed to this filter.
 
@@ -68,10 +83,6 @@ There are few general purpose headers for use with the solutions.
 ### `advent_assert.h`
 
 Very useful. Gives an `AdventCheck`, `AdventCheckMsg` and `AdventUnreachable` message. Depending on the build mode these either throw an exception, or emit a compiler hint.
-
-### `advent_logger.h`
-
-Appears to depend on a header that no longer exists in the repo. Hmm...
 
 ### `advent_setup.h`
 
