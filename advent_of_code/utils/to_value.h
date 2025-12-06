@@ -17,7 +17,7 @@ namespace utils
 		static_assert(base <= 16, "is_value only supports bases up to 16.");
 		if (sv.empty())
 		{
-			return true;
+			return false;
 		}
 
 		switch (sv.front())
