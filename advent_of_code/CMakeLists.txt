@@ -99,7 +99,6 @@ target_sources(${EXENAME} PUBLIC ${TEST_CONFIG_FILES})
 set( UTILS_FILES
 	"utils/a_star.h"
 	"utils/binary_find.h"
-	"utils/bit_ops.h"
 	"utils/brackets.h"
 	"utils/combine_maps.h"
 	"utils/comparisons.h"
