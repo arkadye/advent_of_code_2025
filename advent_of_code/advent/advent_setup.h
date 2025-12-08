@@ -64,6 +64,9 @@ static const verification_test tests[] =
 	TESTCASE(testcase_seven_a,21),
 	TESTCASE(testcase_seven_b, 40),
 	DAY(seven,DAY_07_1_SOLUTION,DAY_07_2_SOLUTION),
+
+	TESTCASE(testcase_eight_a, 40),
+	TESTCASE(testcase_eight_b, 25272),
 	DAY(eight,DAY_08_1_SOLUTION,DAY_08_2_SOLUTION),
 	DAY(nine,DAY_09_1_SOLUTION,DAY_09_2_SOLUTION),
 	DAY(ten, DAY_10_1_SOLUTION, DAY_10_2_SOLUTION),

@@ -5,7 +5,7 @@
 
 namespace utils
 {
-	template <typename CoordsType>
+	template <std::integral CoordsType>
 	struct coords3d
 	{
 		CoordsType x;
@@ -40,6 +40,21 @@ namespace utils
 			return to_tuple(*this) <=> to_tuple(other);
 		}
 		constexpr bool operator==(const coords3d&) const noexcept = default;
+
+		constexpr CoordsType length_squared() const noexcept
+		{
+			return x * x + y * y + z * z;
+		}
+
+		template <std::integral NewType>
+		coords3d<NewType> cast() const
+		{
+			if constexpr (std::is_same_v<CoordsType, NewType>)
+			{
+				return *this;
+			}
+			return coords3d<NewType>(static_cast<NewType>(x), static_cast<NewType>(y), static_cast<NewType>(z));
+		}
 	};
 
 	template <typename LType, typename RType>
@@ -61,5 +76,14 @@ namespace utils
 	{
 		oss << coords.x << "," << coords.y << "," << coords.z;
 		return oss;
+	}
+
+	template <typename LType, typename RType>
+	auto distance(const coords3d<LType>& l, const coords3d<RType>& r)
+	{
+		auto x = std::max(l.x, r.x) - std::min(l.x, r.x);
+		auto y = std::max(l.y, r.y) - std::min(l.y, r.y);
+		auto z = std::max(l.z, r.z) - std::min(l.z, r.z);
+		return x * x + y * y + z * z;
 	}
 }
