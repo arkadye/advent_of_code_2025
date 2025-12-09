@@ -68,7 +68,7 @@ namespace utils
 		anticlockwise
 	};
 
-	inline direction rotate(direction dir, turn_dir td)
+	inline constexpr direction rotate(direction dir, turn_dir td)
 	{
 		int increment = 0;
 		switch (td)
@@ -88,7 +88,7 @@ namespace utils
 		return static_cast<direction>(dir_i);
 	}
 
-	inline direction turn_around(direction dir)
+	inline constexpr direction turn_around(direction dir)
 	{
 		switch (dir)
 		{
