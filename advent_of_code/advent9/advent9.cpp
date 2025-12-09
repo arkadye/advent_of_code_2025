@@ -168,8 +168,7 @@ namespace
 
 		void finished_adding_lines()
 		{
-			std::sort(begin(m_data), end(m_data), [](const ValueType& l, const ValueType& r) {return l.first < r.first; });
-			//stdr::sort(m_data, utils::Smaller<int64_t>{}, &ValueType::first);
+			stdr::sort(m_data, {}, &ValueType::first);
 		}
 
 		bool intersects(const Tile& corner, const Tile& other_corner) const
