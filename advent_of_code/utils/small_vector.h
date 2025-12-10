@@ -137,6 +137,13 @@ namespace utils
 		CONSTEXPR void resize(size_type count, const T& value);
 		CONSTEXPR void swap(small_vector& other) noexcept;
 
+		// Comparison
+		constexpr auto operator==(const small_vector& other) const noexcept { return stdr::equal(*this, other); }
+		constexpr auto operator<=>(const small_vector& other) const noexcept
+		{
+			return std::lexicographical_compare_three_way(begin(), end(), other.begin(), other.end());
+		}
+
 	private:
 #if SMALL_VECTOR_DEBUG_INFO_ENABLED
 		static constexpr int DEBUG_SAFETY_BUFFER = 1;
@@ -1178,10 +1185,12 @@ inline CONSTEXPR typename utils::small_vector<T, STACK_SIZE, ALLOC>::const_refer
 	return (*this)[size() - 1];
 }
 
+// Argument lookup isn't finding these for some reason
+/*
 template<typename T_L, typename T_R, std::size_t STACK_SIZE_L, std::size_t STACK_SIZE_R, typename ALLOC_L, typename ALLOC_R>
 inline CONSTEXPR bool operator==(const utils::small_vector<T_L, STACK_SIZE_L, ALLOC_L>& left, const utils::small_vector<T_R, STACK_SIZE_R, ALLOC_R>& right) noexcept
 {
-	return stdr::equal(left, right);;
+	return stdr::equal(left, right);
 }
 
 template<typename T_L, typename T_R, std::size_t STACK_SIZE_L, std::size_t STACK_SIZE_R, typename ALLOC_L, typename ALLOC_R>
@@ -1189,5 +1198,17 @@ inline CONSTEXPR auto operator<=>(const utils::small_vector<T_L, STACK_SIZE_L, A
 {
 	return std::lexicographical_compare_three_way(begin(left), end(left), begin(right), end(right));
 }
+
+template<typename T, std::size_t STACK_SIZE, typename ALLOC>
+inline CONSTEXPR bool operator==(const utils::small_vector<T, STACK_SIZE, ALLOC>& left, const utils::small_vector<T, STACK_SIZE, ALLOC>& right) noexcept
+{
+	return stdr::equal(left, right);
+}
+
+template<typename T, std::size_t STACK_SIZE, typename ALLOC>
+inline CONSTEXPR auto operator<=>(const utils::small_vector<T, STACK_SIZE, ALLOC>& left, const utils::small_vector<T, STACK_SIZE, ALLOC>& right) noexcept
+{
+	return std::lexicographical_compare_three_way(begin(left), end(left), begin(right), end(right));
+}*/
 
 #undef CONSTEXPR

@@ -63,3 +63,12 @@ constexpr std::array<const char*, 4> DAY_THREE
 };
 
 auto DAY_THREE_COMBINED = advent::combine_inputs(DAY_THREE);
+
+constexpr std::array<const char*, 3> DAY_TEN
+{
+	"[.##.] (3) (1,3) (2) (2,3) (0,2) (0,1) {3,5,4,7}",
+	"[...#.] (0,2,3,4) (2,3) (0,4) (0,1,2) (1,2,3,4) {7,5,12,7,2}",
+	"[.###.#] (0,1,2,3,4) (0,3,4) (0,1,2,4,5) (1,2) {10,11,11,5,10,5}"
+};
+
+auto DAY_TEN_COMBINED = advent::combine_inputs(DAY_TEN);
