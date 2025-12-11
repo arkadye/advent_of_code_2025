@@ -82,6 +82,9 @@ static const verification_test tests[] =
 	TESTCASE_WITH_ARG(testcase_ten_b, DAY_TEN[2], 11),
 	TESTCASE_WITH_ARG(testcase_ten_b, DAY_TEN_COMBINED, 33),
 	DAY(ten, DAY_10_1_SOLUTION, DAY_10_2_SOLUTION),
+
+	TESTCASE(testcase_eleven_a, 5),
+	TESTCASE(testcase_eleven_b, 2),
 	DAY(eleven, DAY_11_1_SOLUTION, DAY_11_2_SOLUTION),
 	DAY(twelve, DAY_12_1_SOLUTION, DAY_12_2_SOLUTION)
 };
